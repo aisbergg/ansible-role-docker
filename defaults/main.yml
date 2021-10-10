@@ -13,10 +13,10 @@ docker_debian_repo_url: "https://download.docker.com/linux/{{ ansible_distributi
 docker_install_docker_compose: true
 
 # Docker Compose version to be installed on CentOS systems (other systems use their package manager)
-docker_centos_compose_version: 1.29.2
+docker_centos_compose_version: 2.0.1
 docker_centos_compose_url: >-
-  https://github.com/docker/compose/releases/download/{{ docker_centos_compose_version }}/docker-compose-Linux-x86_64
-
+  https://github.com/docker/compose/releases/download/v{{ docker_centos_compose_version }}/docker-compose-Linux-x86_64
+docker_centos_compose_sha256_checksum: b2aabbc04768efb0dc73c14d105781dd0aceb7a801d3a27d5113ad8e222f0395
 
 
 # ------------------------------------------------------------------------------

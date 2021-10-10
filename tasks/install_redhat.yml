@@ -48,5 +48,6 @@
         url: "{{ docker_centos_compose_url }}"
         dest: /usr/local/bin/docker-compose
         mode: 0755
+        checksum: "sha256:{{ docker_centos_compose_sha256_checksum }}"
       when: docker_compose_current_version.stdout is not defined or
             docker_centos_compose_version not in docker_compose_current_version.stdout
