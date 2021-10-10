@@ -30,7 +30,7 @@ None.
     docker_service_restart_on_change: true
     docker_users:
       - foo
-    docker_config: 
+    docker_config:
       data-root: /var/lib/docker
       icc: false
       iptables: true
