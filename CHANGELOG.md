@@ -2,10 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+- [1.2.0 (2021-10-10)](#120-2021-10-10)
 - [1.1.0 (2021-10-10)](#110-2021-10-10)
 - [1.0.0 (2021-10-10)](#100-2021-10-10)
 
 ---
+
+<a name="1.2.0"></a>
+## [1.2.0](https://github.com/aisbergg/ansible-role-docker/compare/v1.1.0...v1.2.0) (2021-10-10)
+
+### Chores
+
+- **CHANGELOG.md:** update changelog
+
+### Features
+
+- add option to install Docker Python library
+
 
 <a name="1.1.0"></a>
 ## [1.1.0](https://github.com/aisbergg/ansible-role-docker/compare/v1.0.0...v1.1.0) (2021-10-10)
