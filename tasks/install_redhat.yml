@@ -1,0 +1,52 @@
+---
+# https://docs.docker.com/engine/install/centos/
+
+- name: copy Docker repo GPG keys (CentOS)
+  ansible.builtin.copy:
+    src: etc/pki/rpm-gpg/GPG-KEY-docker
+    dest: /etc/pki/rpm-gpg/GPG-KEY-docker
+    owner: root
+    group: root
+    mode: 0644
+
+- name: import Docker repo GPG keys (CentOS)
+  ansible.builtin.rpm_key:
+    key: /etc/pki/rpm-gpg/GPG-KEY-docker
+    fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+
+- name: add Docker RPM repository (CentOS)
+  ansible.builtin.template:
+    src: etc/yum.repos.d/docker.repo.j2
+    dest: /etc/yum.repos.d/docker.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: install Docker (CentOS)
+  ansible.builtin.yum:
+    name: docker-ce
+    state: present
+
+- when: docker_install_docker_compose | bool
+  block:
+    - name: check installed Docker Compose version (CentOS)
+      command: docker-compose --version
+      register: docker_compose_current_version
+      changed_when: false
+      failed_when: false
+
+    - name: delete old Docker Compose version (CentOS)
+      file:
+        path: /usr/local/bin/docker-compose
+        state: absent
+      when:
+        - docker_compose_current_version.stdout is defined
+        - docker_centos_compose_version not in docker_compose_current_version.stdout
+
+    - name: install Docker Compose (CentOS)
+      get_url:
+        url: "{{ docker_centos_compose_url }}"
+        dest: /usr/local/bin/docker-compose
+        mode: 0755
+      when: docker_compose_current_version.stdout is not defined or
+            docker_centos_compose_version not in docker_compose_current_version.stdout

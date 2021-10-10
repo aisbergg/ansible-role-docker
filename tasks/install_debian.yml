@@ -1,0 +1,41 @@
+---
+# https://docs.docker.com/engine/install/debian/
+
+- name: remove old Docker versions (Debian)
+  ansible.builtin.apt:
+    name:
+      - docker
+      - docker.io
+      - docker-engine
+    state: absent
+
+- name: copy Docker repo GPG key (Debian)
+  ansible.builtin.copy:
+    src: usr/share/keyrings/docker-archive-keyring.gpg
+    dest: /usr/share/keyrings/docker-archive-keyring.gpg
+    owner: root
+    group: root
+    mode: 0644
+
+- name: add Docker APT repository (Debian)
+  ansible.builtin.template:
+    src: etc/apt/sources.list.d/docker.list.j2
+    dest: /etc/apt/sources.list.d/docker.list
+    owner: root
+    group: root
+    mode: 0644
+
+- name: install Docker (Debian)
+  ansible.builtin.apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+    update_cache: true
+
+- name: install Docker Compose (Debian)
+  ansible.builtin.apt:
+    name: docker-compose
+    state: present
+  when: docker_install_docker_compose | bool

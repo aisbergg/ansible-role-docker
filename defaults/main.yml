@@ -1,0 +1,46 @@
+---
+# ------------------------------------------------------------------------------
+# Installation
+# ------------------------------------------------------------------------------
+
+# RPM repository URL to be used for installation on CentOS systems
+docker_centos_repo_url: "https://download.docker.com/linux/centos/$releasever/$basearch/stable"
+
+# APT repository URL to be used for installation
+docker_debian_repo_url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}"
+
+# whether or not to install Docker Compose
+docker_install_docker_compose: true
+
+# Docker Compose version to be installed on CentOS systems (other systems use their package manager)
+docker_centos_compose_version: 1.29.2
+docker_centos_compose_url: >-
+  https://github.com/docker/compose/releases/download/{{ docker_centos_compose_version }}/docker-compose-Linux-x86_64
+
+
+
+# ------------------------------------------------------------------------------
+# Service
+# ------------------------------------------------------------------------------
+
+# service enabled on boot
+docker_service_enabled: true
+
+# service run state (started, stopped, restarted)
+docker_service_state: started
+
+# restart service on configuration change
+docker_service_restart_on_change: true
+
+
+
+# ------------------------------------------------------------------------------
+# Configuration
+# ------------------------------------------------------------------------------
+
+# configuration of the Docker daemon (key-value pairs)
+# https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
+docker_config: {}
+
+# list of users to be added to the Docker group (allow users to control Docker)
+docker_users: []

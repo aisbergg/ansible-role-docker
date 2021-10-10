@@ -1,0 +1,11 @@
+---
+- name: install Docker (Arch Linux)
+  community.general.pacman:
+    name: docker
+    state: present
+
+- name: install Docker Compose (Arch Linux)
+  community.general.pacman:
+    name: docker-compose
+    state: present
+  when: docker_install_docker_compose | bool

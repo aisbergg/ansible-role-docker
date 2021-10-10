@@ -1,0 +1,8 @@
+---
+- name: restart docker
+  ansible.builtin.service:
+    name: docker
+    state: restarted
+  when:
+    - docker_service_restart_on_change | bool
+    - docker_service_state != 'stopped'

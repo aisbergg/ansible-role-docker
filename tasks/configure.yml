@@ -1,0 +1,17 @@
+---
+- name: ensure Docker config dir exists
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    owner: root
+    group: root
+    mode: 0750
+
+- name: configure Docker
+  ansible.builtin.copy:
+    content: "{{ docker_config | to_nice_json }}"
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart docker

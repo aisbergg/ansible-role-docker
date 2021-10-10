@@ -1,0 +1,34 @@
+---
+- name: include OS-specific variables
+  tags: [docker, always]
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_os_family | lower }}_{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+        - "{{ ansible_distribution | lower }}_{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+      skip: true
+
+- name: include installation tasks
+  tags: [docker, docker_install, install]
+  ansible.builtin.include_tasks: "{{ task_file }}"
+  loop_control:
+    loop_var: task_file
+  with_first_found:
+    - "install_{{ ansible_os_family | lower }}_{{ ansible_distribution_major_version }}.yml"
+    - "install_{{ ansible_os_family | lower }}.yml"
+    - "install_{{ ansible_distribution | lower }}_{{ ansible_distribution_major_version }}.yml"
+    - "install_{{ ansible_distribution | lower }}.yml"
+
+- name: include configuration tasks
+  tags: [docker, docker_config, config]
+  ansible.builtin.import_tasks: configure.yml
+
+- name: include user tasks
+  tags: [docker, docker_config, config]
+  ansible.builtin.import_tasks: add_users.yml
+
+- name: include service tasks
+  tags: [docker, docker_service, service]
+  ansible.builtin.import_tasks: service.yml
