@@ -51,3 +51,9 @@
         checksum: "sha256:{{ docker_centos_compose_sha256_checksum }}"
       when: docker_compose_current_version.stdout is not defined or
             docker_centos_compose_version not in docker_compose_current_version.stdout
+
+- name: install Docker Python library (CentOS)
+  ansible.builtin.yum:
+    name: python3-docker
+    state: present
+  when: docker_install_python_docker | bool

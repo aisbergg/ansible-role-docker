@@ -39,3 +39,9 @@
     name: docker-compose
     state: present
   when: docker_install_docker_compose | bool
+
+- name: install Docker Python library (Debian)
+  ansible.builtin.apt:
+    name: python-docker
+    state: present
+  when: docker_install_python_docker | bool

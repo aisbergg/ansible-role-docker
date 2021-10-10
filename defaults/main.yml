@@ -18,6 +18,9 @@ docker_centos_compose_url: >-
   https://github.com/docker/compose/releases/download/v{{ docker_centos_compose_version }}/docker-compose-Linux-x86_64
 docker_centos_compose_sha256_checksum: b2aabbc04768efb0dc73c14d105781dd0aceb7a801d3a27d5113ad8e222f0395
 
+# whether or not to install Docker Python library
+docker_install_python_docker: true
+
 
 # ------------------------------------------------------------------------------
 # Service

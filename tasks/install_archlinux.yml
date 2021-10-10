@@ -9,3 +9,9 @@
     name: docker-compose
     state: present
   when: docker_install_docker_compose | bool
+
+- name: install Docker Python library (Arch Linux)
+  community.general.pacman:
+    name: python-docker
+    state: present
+  when: docker_install_python_docker | bool
