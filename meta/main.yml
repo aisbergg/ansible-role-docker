@@ -2,7 +2,7 @@
 dependencies: []
 
 galaxy_info:
-  author: aisbergg
+  author: André Lehmann
   namespace: aisbergg
   role_name: docker
   description: Install and configure Docker and Docker Compose on Debian, CentOS and Arch Linux systems.
