@@ -2,12 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+- [1.3.0 (2022-01-28)](#1.3.0-2022-01-28)
 - [1.2.1 (2021-10-11)](#121-2021-10-11)
 - [1.2.0 (2021-10-10)](#120-2021-10-10)
 - [1.1.0 (2021-10-10)](#110-2021-10-10)
 - [1.0.0 (2021-10-10)](#100-2021-10-10)
 
 ---
+
+<a name="1.3.0"></a>
+## [1.3.0](https://github.com/aisbergg/ansible-role-docker/compare/v1.2.1...1.3.0) (2022-01-28)
+
+### Bug Fixes
+
+- don't run python-docker installation in check mode (fails, if repository is not installed)
+- install Python 3 Docker package on Debian systems
+
+### CI Configuration
+
+- fix automatic release and publish process
+
+### Chores
+
+- include changelog in bump commits
+- update changelog template
+
 
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/aisbergg/ansible-role-docker/compare/v1.2.0...v1.2.1) (2021-10-11)
@@ -52,4 +71,4 @@ All notable changes to this project will be documented in this file.
 <a name="1.0.0"></a>
 ## [1.0.0]() (2021-10-10)
 
-- Initial release
+Initial Release
