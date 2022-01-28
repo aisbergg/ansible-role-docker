@@ -44,4 +44,6 @@
   ansible.builtin.apt:
     name: python3-docker
     state: present
-  when: docker_install_python_docker | bool
+  when:
+    - docker_install_python_docker | bool
+    - not ansible_check_mode
