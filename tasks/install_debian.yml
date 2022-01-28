@@ -42,6 +42,6 @@
 
 - name: install Docker Python library (Debian)
   ansible.builtin.apt:
-    name: python-docker
+    name: python3-docker
     state: present
   when: docker_install_python_docker | bool
