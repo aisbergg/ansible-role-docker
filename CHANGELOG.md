@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-- [1.3.0 (2022-01-28)](#1.3.0-2022-01-28)
+- [1.4.0 (2022-03-31)](#140-2022-03-31)
+- [1.3.0 (2022-01-28)](#130-2022-01-28)
 - [1.2.1 (2021-10-11)](#121-2021-10-11)
 - [1.2.0 (2021-10-10)](#120-2021-10-10)
 - [1.1.0 (2021-10-10)](#110-2021-10-10)
@@ -10,8 +11,25 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+<a name="1.4.0"></a>
+## [1.4.0](https://github.com/aisbergg/ansible-role-docker/compare/v1.3.0...v1.4.0) (2022-03-31)
+
+### CI Configuration
+
+- add branch explicitly to make Ansible import action happy
+- bump Ansible Galaxy action version
+
+### Chores
+
+- don't use bump2version to include the CHANGELOG in the bump commit, it doesn't do a good job
+
+### Features
+
+- bump Docker Compose version to 2.3.4
+
+
 <a name="1.3.0"></a>
-## [1.3.0](https://github.com/aisbergg/ansible-role-docker/compare/v1.2.1...1.3.0) (2022-01-28)
+## [1.3.0](https://github.com/aisbergg/ansible-role-docker/compare/v1.2.1...v1.3.0) (2022-01-28)
 
 ### Bug Fixes
 
